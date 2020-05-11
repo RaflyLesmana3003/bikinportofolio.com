@@ -1,0 +1,27 @@
+{
+    "name": "Domain Name",
+    "short_name": "domain_name",
+    "icons": [
+        {
+            "src": "https://www.domain.com/android-chrome-192x192.png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "https://www.domain.com/android-chrome-256x256.png",
+            "sizes": "256x256"
+        }, 
+        {
+            "src": "https://www.domain.comandroid-chrome-512x512.png",
+            "sizes": "512x512"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "start_url": "https://www.domain.com",
+    "url": "https://www.domain.com",
+    "lang": "",
+    "screenshots": [],
+    "orientation": "portrait",
+    "generated": "undefined"
+}
