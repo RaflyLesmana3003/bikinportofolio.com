@@ -22,7 +22,7 @@
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
 
     <meta name="author" content="Creative Tim">
-    <title>jadifreelancer - tempat keren latihan jadi freelancer</title>
+    <title>jadifreelancer - @yield('title')</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="image/png">
     <!-- Fonts -->
@@ -32,16 +32,18 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
     <!-- Page plugins -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/quill/dist/quill.core.css') }}">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/argon.css?v=1.1.0') }}" type="text/css">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/loadingio/ldbutton@v1.0.1/dist/ldbtn.min.css"
-/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/loadingio/ldbutton@v1.0.1/dist/ldbtn.min.css"/>
+    <link rel="stylesheet" href="{{ asset('assets/tag/fm.tagator.jquery.css') }}">
+
+
 </head>
 
 <body>
@@ -81,7 +83,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('task') ? 'active' : '' }}"  href="{{url('/task/add')}}" >
+                        <a class="nav-link {{ request()->routeIs('task') ? 'active' : '' }}"  href="{{url('/task/index')}}" >
                             <i class="fa fa-book text-info"></i>
                             <span class="nav-link-text">Task</span>
                         </a>
@@ -97,8 +99,8 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('f27fc78ffa140e97e0c535374a2a2213') }}">
-                                <i class="fa fa-book text-info"></i>
-                                <span class="nav-link-text">Task</span>
+                                <i class="fa fa-home text-info"></i>
+                                <span class="nav-link-text">Home</span>
                             </a>
                         </li>
                     </ul>
@@ -170,7 +172,7 @@
                             <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-search"></i></span>
                             </div>
-                            <input class="form-control" name="key" id="key" placeholder="pencarian" type="text" required>
+                            <input class="form-control" name="key" id="key" placeholder="cari task" type="text" required>
                         </div>
                     </div>
                     <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
@@ -333,17 +335,17 @@
     <script src="{{ asset('assets/vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
     <!-- <script src="{{ asset('assets/vendor/dropzone/dist/min/dropzone.min.js') }}"></script> -->
 
-    <script src="../../assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="../../assets/vendor/datatables.net-select/js/dataTables.select.min.js"></script>
+    <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
     <!-- Argon JS -->
-    <script src="{{ asset('assets/js/argon.js?v=1.1.0') }}"></script>
+    <script src="{{ asset('assets/js/argon.js') }}"></script>
     <!-- Demo JS - remove this in your project -->
     <!-- <script src="{{ asset('assets/js/demo.min.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

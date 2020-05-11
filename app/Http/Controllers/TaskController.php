@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -12,11 +13,20 @@ class TaskController extends Controller
         $this->middleware('auth');
     }
 
-    // NOTE  add task - page redirect
+    // NOTE  task - page redirect
     public function taskPage()
     {
-        //
-        return view('page/admin/task/task');
+        // 
+        $task = DB::table('tasks')->get();
+        return view('page/admin/task/task',['task' => $task]);
+
+    }
+
+    // NOTE  add task - page redirect
+    public function addtaskPage()
+    {
+        // 
+        return view('page/admin/task/add');
 
     }
 
@@ -39,6 +49,14 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
+        DB::table('tasks')->insert([[
+            'title' => $request->title, 
+            'keahlian' => $request->skill,  
+            'desc' => $request->desc,
+            'created_at' => now(),
+          ]]);
+        return redirect()->route('task.index');
+
     }
 
     /**
@@ -81,8 +99,10 @@ class TaskController extends Controller
      * @param  \App\task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(task $task)
+    public function destroy($id)
     {
+        DB::table('tasks')->where('id', '=', $id)->delete();
+        return redirect()->route('task.index');
         //
     }
 }

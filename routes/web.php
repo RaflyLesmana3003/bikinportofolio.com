@@ -21,6 +21,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware(['auth'])->prefix('task')->name('task')->group(function() {
-    Route::get('add', 'TaskController@taskPage');
+Route::middleware(['auth'])->prefix('task')->group(function() {
+    Route::get('index', 'TaskController@taskPage')->name('task.index');
+    Route::get('add', 'TaskController@addtaskPage');
+    Route::post('add', 'TaskController@store');
+    Route::get('delete/{id}', 'TaskController@destroy');
 });
